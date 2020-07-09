@@ -1,0 +1,418 @@
+unit UPlanilla1164_01;
+
+interface
+
+uses
+  Classes;
+  
+type
+  TPlanilla1164_01 = Class(TObject)
+  private
+    //--------------------------------------
+    //**  Formato de la Planilla 1164-01  **
+    //--------------------------------------
+
+    //Posicionamiento
+    FID_Planilla: Integer;
+    FAnno: Integer;
+    FMunicipio: AnsiString;
+    FProvincia: AnsiString;
+
+
+
+    //Datos Generales
+    FNombreCentroInformante: AnsiString;
+    FCodigoCentroInformante: AnsiString;
+    FNombreDirectorEconomico: AnsiString;
+    FNombreRectorODirector: AnsiString;
+    FFechaConfeccion: TDateTime;
+
+
+    //Sección I: Caracterización
+    FDoctoresXTotal: Integer;
+    FDoctoresXCantGrad: Integer;
+    FDoctoresXCantParticip: Integer;
+
+
+
+    //Sección II: Superación Profesional
+    //Diplomados
+    FDiplomadosXCantActivTotal: Integer;
+    FDiplomadosXCantActivUnivMun: Integer;
+    FDiplomadosXCantActivADistancia: Integer;
+    FDiplomadosXCantActivExtranjero: Integer;
+    FDiplomadosXCantParticipTotal: Integer;
+    FDiplomadosXCantParticipMujeres: Integer;
+    FDiplomadosXCantParticipExtranjeros: Integer;
+    FDiplomadosXCantParticipProfTC: Integer;
+    FDiplomadosXCantParticipProfTP: Integer;
+    FDiplomadosXCantParticipUnivMun: Integer;
+    FDiplomadosXCantParticipADistancia: Integer;
+    FDiplomadosXCantGradTotal: Integer;
+    FDiplomadosXCantGradMujeres: Integer;
+    FDiplomadosXCantGradExtranjeros: Integer;
+    FDiplomadosXCantGradProfTC: Integer;
+    FDiplomadosXCantGradProfTP: Integer;
+
+    //Entrenamientos
+    FEntrenamientosXCantActivTotal: Integer;
+    FEntrenamientosXCantActivUnivMun: Integer;
+    FEntrenamientosXCantActivADistancia: Integer;
+    FEntrenamientosXCantActivExtranjero: Integer;
+    FEntrenamientosXCantParticipTotal: Integer;
+    FEntrenamientosXCantParticipMujeres: Integer;
+    FEntrenamientosXCantParticipExtranjeros: Integer;
+    FEntrenamientosXCantParticipProfTC: Integer;
+    FEntrenamientosXCantParticipProfTP: Integer;
+    FEntrenamientosXCantParticipUnivMun: Integer;
+    FEntrenamientosXCantParticipADistancia: Integer;
+    FEntrenamientosXCantGradTotal: Integer;
+    FEntrenamientosXCantGradMujeres: Integer;
+    FEntrenamientosXCantGradExtranjeros: Integer;
+    FEntrenamientosXCantGradProfTC: Integer;
+    FEntrenamientosXCantGradProfTP: Integer;
+
+    //Cursos
+    FCursosXCantActivTotal: Integer;
+    FCursosXCantActivUnivMun: Integer;
+    FCursosXCantActivADistancia: Integer;
+    FCursosXCantActivExtranjero: Integer;
+    FCursosXCantParticipTotal: Integer;
+    FCursosXCantParticipMujeres: Integer;
+    FCursosXCantParticipExtranjeros: Integer;
+    FCursosXCantParticipProfTC: Integer;
+    FCursosXCantParticipProfTP: Integer;
+    FCursosXCantParticipUnivMun: Integer;
+    FCursosXCantParticipADistancia: Integer;
+    FCursosXCantGradTotal: Integer;
+    FCursosXCantGradMujeres: Integer;
+    FCursosXCantGradExtranjeros: Integer;
+    FCursosXCantGradProfTC: Integer;
+    FCursosXCantGradProfTP: Integer;
+
+    //SubTotal II
+    FSubTotal2XCantActivTotal: Integer;
+    FSubTotal2XCantActivUnivMun: Integer;
+    FSubTotal2XCantActivADistancia: Integer;
+    FSubTotal2XCantActivExtranjero: Integer;
+    FSubTotal2XCantParticipTotal: Integer;
+    FSubTotal2XCantParticipMujeres: Integer;
+    FSubTotal2XCantParticipExtranjeros: Integer;
+    FSubTotal2XCantParticipProfTC: Integer;
+    FSubTotal2XCantParticipProfTP: Integer;
+    FSubTotal2XCantParticipUnivMun: Integer;
+    FSubTotal2XCantParticipADistancia: Integer;
+    FSubTotal2XCantGradTotal: Integer;
+    FSubTotal2XCantGradMujeres: Integer;
+    FSubTotal2XCantGradExtranjeros: Integer;
+    FSubTotal2XCantGradProfTC: Integer;
+    FSubTotal2XCantGradProfTP: Integer;
+
+
+    //Sección II: Postgrado Académico
+
+    //Doctorados
+    FDoctoradosXCantActivTotal: Integer;
+    FDoctoradosXCantActivUnivMun: Integer;
+    FDoctoradosXCantActivADistancia: Integer;
+    FDoctoradosXCantActivExtranjero: Integer;
+    FDoctoradosXCantParticipTotal: Integer;
+    FDoctoradosXCantParticipMujeres: Integer;
+    FDoctoradosXCantParticipExtranjeros: Integer;
+    FDoctoradosXCantParticipProfTC: Integer;
+    FDoctoradosXCantParticipProfTP: Integer;
+    FDoctoradosXCantParticipUnivMun: Integer;
+    FDoctoradosXCantParticipADistancia: Integer;
+    FDoctoradosXCantGradTotal: Integer;
+    FDoctoradosXCantGradMujeres: Integer;
+    FDoctoradosXCantGradExtranjeros: Integer;
+    FDoctoradosXCantGradProfTC: Integer;
+    FDoctoradosXCantGradProfTP: Integer;
+
+    //Especialidades
+    FEspecialidadesXCantActivTotal: Integer;
+    FEspecialidadesXCantActivUnivMun: Integer;
+    FEspecialidadesXCantActivADistancia: Integer;
+    FEspecialidadesXCantActivExtranjero: Integer;
+    FEspecialidadesXCantParticipTotal: Integer;
+    FEspecialidadesXCantParticipMujeres: Integer;
+    FEspecialidadesXCantParticipExtranjeros: Integer;
+    FEspecialidadesXCantParticipProfTC: Integer;
+    FEspecialidadesXCantParticipProfTP: Integer;
+    FEspecialidadesXCantParticipUnivMun: Integer;
+    FEspecialidadesXCantParticipADistancia: Integer;
+    FEspecialidadesXCantGradTotal: Integer;
+    FEspecialidadesXCantGradMujeres: Integer;
+    FEspecialidadesXCantGradExtranjeros: Integer;
+    FEspecialidadesXCantGradProfTC: Integer;
+    FEspecialidadesXCantGradProfTP: Integer;
+
+    //Maestrías
+    FMaestriasXCantActivTotal: Integer;
+    FMaestriasXCantActivUnivMun: Integer;
+    FMaestriasXCantActivADistancia: Integer;
+    FMaestriasXCantActivExtranjero: Integer;
+    FMaestriasXCantParticipTotal: Integer;
+    FMaestriasXCantParticipMujeres: Integer;
+    FMaestriasXCantParticipExtranjeros: Integer;
+    FMaestriasXCantParticipProfTC: Integer;
+    FMaestriasXCantParticipProfTP: Integer;
+    FMaestriasXCantParticipUnivMun: Integer;
+    FMaestriasXCantParticipADistancia: Integer;
+    FMaestriasXCantGradTotal: Integer;
+    FMaestriasXCantGradMujeres: Integer;
+    FMaestriasXCantGradExtranjeros: Integer;
+    FMaestriasXCantGradProfTC: Integer;
+    FMaestriasXCantGradProfTP: Integer;
+
+    //SubTotal III
+    FSubTotal3XCantActivTotal: Integer;
+    FSubTotal3XCantActivUnivMun: Integer;
+    FSubTotal3XCantActivADistancia: Integer;
+    FSubTotal3XCantActivExtranjero: Integer;
+    FSubTotal3XCantParticipTotal: Integer;
+    FSubTotal3XCantParticipMujeres: Integer;
+    FSubTotal3XCantParticipExtranjeros: Integer;
+    FSubTotal3XCantParticipProfTC: Integer;
+    FSubTotal3XCantParticipProfTP: Integer;
+    FSubTotal3XCantParticipUnivMun: Integer;
+    FSubTotal3XCantParticipADistancia: Integer;
+    FSubTotal3XCantGradTotal: Integer;
+    FSubTotal3XCantGradMujeres: Integer;
+    FSubTotal3XCantGradExtranjeros: Integer;
+    FSubTotal3XCantGradProfTC: Integer;
+    FSubTotal3XCantGradProfTP: Integer;
+
+
+    //Total
+    FTotalXCantActivTotal: Integer;
+    FTotalXCantActivUnivMun: Integer;
+    FTotalXCantActivADistancia: Integer;
+    FTotalXCantActivExtranjero: Integer;
+    FTotalXCantParticipTotal: Integer;
+    FTotalXCantParticipMujeres: Integer;
+    FTotalXCantParticipExtranjeros: Integer;
+    FTotalXCantParticipProfTC: Integer;
+    FTotalXCantParticipProfTP: Integer;
+    FTotalXCantParticipUnivMun: Integer;
+    FTotalXCantParticipADistancia: Integer;
+    FTotalXCantGradTotal: Integer;
+    FTotalXCantGradMujeres: Integer;
+    FTotalXCantGradExtranjeros: Integer;
+    FTotalXCantGradProfTC: Integer;
+    FTotalXCantGradProfTP: Integer;
+
+
+  public
+    Constructor Create;
+    Destructor Destroy;
+
+    //propertys de acceso a los campos de la Planilla 1164-01 (156 campos)
+    //Posicionamiento
+    property ID_Planilla: Integer read FID_Planilla write FID_Planilla;
+    property Anno: Integer read FAnno write FAnno;
+    property Municipio: AnsiString read FMunicipio write FMunicipio;
+    property Provincia: AnsiString read FProvincia write FProvincia;
+
+
+
+    //Datos Generales
+    property NombreCentroInformante: AnsiString read FNombreCentroInformante write FNombreCentroInformante;
+    property CodigoCentroInformante: AnsiString read FCodigoCentroInformante write FCodigoCentroInformante;
+    property NombreDirectorEconomico: AnsiString read FNombreDirectorEconomico write FNombreDirectorEconomico;
+    property NombreRectorODirector: AnsiString read FNombreRectorODirector write FNombreRectorODirector;
+    property FechaConfeccion: TDateTime read FFechaConfeccion write FFechaConfeccion;
+
+
+    //Sección I: Caracterización
+    property DoctoresXTotal: Integer read FDoctoresXTotal write FDoctoresXTotal;
+    property DoctoresXCantGrad: Integer read FDoctoresXCantGrad write FDoctoresXCantGrad;
+    property DoctoresXCantParticip: Integer read FDoctoresXCantParticip write FDoctoresXCantParticip;
+
+
+
+    //Sección II: Superación Profesional
+    //Diplomados
+    property DiplomadosXCantActivTotal: Integer read FDiplomadosXCantActivTotal write FDiplomadosXCantActivTotal;
+    property DiplomadosXCantActivUnivMun: Integer read FDiplomadosXCantActivUnivMun write FDiplomadosXCantActivUnivMun;
+    property DiplomadosXCantActivADistancia: Integer read FDiplomadosXCantActivADistancia write FDiplomadosXCantActivADistancia;
+    property DiplomadosXCantActivExtranjero: Integer read FDiplomadosXCantActivExtranjero write FDiplomadosXCantActivExtranjero;
+    property DiplomadosXCantParticipTotal: Integer read FDiplomadosXCantParticipTotal write FDiplomadosXCantParticipTotal;
+    property DiplomadosXCantParticipMujeres: Integer read FDiplomadosXCantParticipMujeres write FDiplomadosXCantParticipMujeres;
+    property DiplomadosXCantParticipExtranjeros: Integer read FDiplomadosXCantParticipExtranjeros write FDiplomadosXCantParticipExtranjeros;
+    property DiplomadosXCantParticipProfTC: Integer read FDiplomadosXCantParticipProfTC write FDiplomadosXCantParticipProfTC;
+    property DiplomadosXCantParticipProfTP: Integer read FDiplomadosXCantParticipProfTP write FDiplomadosXCantParticipProfTP;
+    property DiplomadosXCantParticipUnivMun: Integer read FDiplomadosXCantParticipUnivMun write FDiplomadosXCantParticipUnivMun;
+    property DiplomadosXCantParticipADistancia: Integer read FDiplomadosXCantParticipADistancia write FDiplomadosXCantParticipADistancia;
+    property DiplomadosXCantGradTotal: Integer read FDiplomadosXCantGradTotal write FDiplomadosXCantGradTotal;
+    property DiplomadosXCantGradMujeres: Integer read FDiplomadosXCantGradMujeres write FDiplomadosXCantGradMujeres;
+    property DiplomadosXCantGradExtranjeros: Integer read FDiplomadosXCantGradExtranjeros write FDiplomadosXCantGradExtranjeros;
+    property DiplomadosXCantGradProfTC: Integer read FDiplomadosXCantGradProfTC write FDiplomadosXCantGradProfTC;
+    property DiplomadosXCantGradProfTP: Integer read FDiplomadosXCantGradProfTP write FDiplomadosXCantGradProfTP;
+
+    //Entrenamientos
+    property EntrenamientosXCantActivTotal: Integer read FEntrenamientosXCantActivTotal write FEntrenamientosXCantActivTotal;
+    property EntrenamientosXCantActivUnivMun: Integer read FEntrenamientosXCantActivUnivMun write FEntrenamientosXCantActivUnivMun;
+    property EntrenamientosXCantActivADistancia: Integer read FEntrenamientosXCantActivADistancia write FEntrenamientosXCantActivADistancia;
+    property EntrenamientosXCantActivExtranjero: Integer read FEntrenamientosXCantActivExtranjero write FEntrenamientosXCantActivExtranjero;
+    property EntrenamientosXCantParticipTotal: Integer read FEntrenamientosXCantParticipTotal write FEntrenamientosXCantParticipTotal;
+    property EntrenamientosXCantParticipMujeres: Integer read FEntrenamientosXCantParticipMujeres write FEntrenamientosXCantParticipMujeres;
+    property EntrenamientosXCantParticipExtranjeros: Integer read FEntrenamientosXCantParticipExtranjeros write FEntrenamientosXCantParticipExtranjeros;
+    property EntrenamientosXCantParticipProfTC: Integer read FEntrenamientosXCantParticipProfTC write FEntrenamientosXCantParticipProfTC;
+    property EntrenamientosXCantParticipProfTP: Integer read FEntrenamientosXCantParticipProfTP write FEntrenamientosXCantParticipProfTP;
+    property EntrenamientosXCantParticipUnivMun: Integer read FEntrenamientosXCantParticipUnivMun write FEntrenamientosXCantParticipUnivMun;
+    property EntrenamientosXCantParticipADistancia: Integer read FEntrenamientosXCantParticipADistancia write FEntrenamientosXCantParticipADistancia;
+    property EntrenamientosXCantGradTotal: Integer read FEntrenamientosXCantGradTotal write FEntrenamientosXCantGradTotal;
+    property EntrenamientosXCantGradMujeres: Integer read FEntrenamientosXCantGradMujeres write FEntrenamientosXCantGradMujeres;
+    property EntrenamientosXCantGradExtranjeros: Integer read FEntrenamientosXCantGradExtranjeros write FEntrenamientosXCantGradExtranjeros;
+    property EntrenamientosXCantGradProfTC: Integer read FEntrenamientosXCantGradProfTC write FEntrenamientosXCantGradProfTC;
+    property EntrenamientosXCantGradProfTP: Integer read FEntrenamientosXCantGradProfTP write FEntrenamientosXCantGradProfTP;
+
+    //Cursos
+    property CursosXCantActivTotal: Integer read FCursosXCantActivTotal write FCursosXCantActivTotal;
+    property CursosXCantActivUnivMun: Integer read FCursosXCantActivUnivMun write FCursosXCantActivUnivMun;
+    property CursosXCantActivADistancia: Integer read FCursosXCantActivADistancia write FCursosXCantActivADistancia;
+    property CursosXCantActivExtranjero: Integer read FCursosXCantActivExtranjero write FCursosXCantActivExtranjero;
+    property CursosXCantParticipTotal: Integer read FCursosXCantParticipTotal write FCursosXCantParticipTotal;
+    property CursosXCantParticipMujeres: Integer read FCursosXCantParticipMujeres write FCursosXCantParticipMujeres;
+    property CursosXCantParticipExtranjeros: Integer read FCursosXCantParticipExtranjeros write FCursosXCantParticipExtranjeros;
+    property CursosXCantParticipProfTC: Integer read FCursosXCantParticipProfTC write FCursosXCantParticipProfTC;
+    property CursosXCantParticipProfTP: Integer read FCursosXCantParticipProfTP write FCursosXCantParticipProfTP;
+    property CursosXCantParticipUnivMun: Integer read FCursosXCantParticipUnivMun write FCursosXCantParticipUnivMun;
+    property CursosXCantParticipADistancia: Integer read FCursosXCantParticipADistancia write FCursosXCantParticipADistancia;
+    property CursosXCantGradTotal: Integer read FCursosXCantGradTotal write FCursosXCantGradTotal;
+    property CursosXCantGradMujeres: Integer read FCursosXCantGradMujeres write FCursosXCantGradMujeres;
+    property CursosXCantGradExtranjeros: Integer read FCursosXCantGradExtranjeros write FCursosXCantGradExtranjeros;
+    property CursosXCantGradProfTC: Integer read FCursosXCantGradProfTC write FCursosXCantGradProfTC;
+    property CursosXCantGradProfTP: Integer read FCursosXCantGradProfTP write FCursosXCantGradProfTP;
+
+    //SubTotal II
+    property SubTotal2XCantActivTotal: Integer read FSubTotal2XCantActivTotal write FSubTotal2XCantActivTotal;
+    property SubTotal2XCantActivUnivMun: Integer read FSubTotal2XCantActivUnivMun write FSubTotal2XCantActivUnivMun;
+    property SubTotal2XCantActivADistancia: Integer read FSubTotal2XCantActivADistancia write FSubTotal2XCantActivADistancia;
+    property SubTotal2XCantActivExtranjero: Integer read FSubTotal2XCantActivExtranjero write FSubTotal2XCantActivExtranjero;
+    property SubTotal2XCantParticipTotal: Integer read FSubTotal2XCantParticipTotal write FSubTotal2XCantParticipTotal;
+    property SubTotal2XCantParticipMujeres: Integer read FSubTotal2XCantParticipMujeres write FSubTotal2XCantParticipMujeres;
+    property SubTotal2XCantParticipExtranjeros: Integer read FSubTotal2XCantParticipExtranjeros write FSubTotal2XCantParticipExtranjeros;
+    property SubTotal2XCantParticipProfTC: Integer read FSubTotal2XCantParticipProfTC write FSubTotal2XCantParticipProfTC;
+    property SubTotal2XCantParticipProfTP: Integer read FSubTotal2XCantParticipProfTP write FSubTotal2XCantParticipProfTP;
+    property SubTotal2XCantParticipUnivMun: Integer read FSubTotal2XCantParticipUnivMun write FSubTotal2XCantParticipUnivMun;
+    property SubTotal2XCantParticipADistancia: Integer read FSubTotal2XCantParticipADistancia write FSubTotal2XCantParticipADistancia;
+    property SubTotal2XCantGradTotal: Integer read FSubTotal2XCantGradTotal write FSubTotal2XCantGradTotal;
+    property SubTotal2XCantGradMujeres: Integer read FSubTotal2XCantGradMujeres write FSubTotal2XCantGradMujeres;
+    property SubTotal2XCantGradExtranjeros: Integer read FSubTotal2XCantGradExtranjeros write FSubTotal2XCantGradExtranjeros;
+    property SubTotal2XCantGradProfTC: Integer read FSubTotal2XCantGradProfTC write FSubTotal2XCantGradProfTC;
+    property SubTotal2XCantGradProfTP: Integer read FSubTotal2XCantGradProfTP write FSubTotal2XCantGradProfTP;
+
+
+    //Sección II: Postgrado Académico
+
+    //Doctorados
+    property DoctoradosXCantActivTotal: Integer read FDoctoradosXCantActivTotal write FDoctoradosXCantActivTotal;
+    property DoctoradosXCantActivUnivMun: Integer read FDoctoradosXCantActivUnivMun write FDoctoradosXCantActivUnivMun;
+    property DoctoradosXCantActivADistancia: Integer read FDoctoradosXCantActivADistancia write FDoctoradosXCantActivADistancia;
+    property DoctoradosXCantActivExtranjero: Integer read FDoctoradosXCantActivExtranjero write FDoctoradosXCantActivExtranjero;
+    property DoctoradosXCantParticipTotal: Integer read FDoctoradosXCantParticipTotal write FDoctoradosXCantParticipTotal;
+    property DoctoradosXCantParticipMujeres: Integer read FDoctoradosXCantParticipMujeres write FDoctoradosXCantParticipMujeres;
+    property DoctoradosXCantParticipExtranjeros: Integer read FDoctoradosXCantParticipExtranjeros write FDoctoradosXCantParticipExtranjeros;
+    property DoctoradosXCantParticipProfTC: Integer read FDoctoradosXCantParticipProfTC write FDoctoradosXCantParticipProfTC;
+    property DoctoradosXCantParticipProfTP: Integer read FDoctoradosXCantParticipProfTP write FDoctoradosXCantParticipProfTP;
+    property DoctoradosXCantParticipUnivMun: Integer read FDoctoradosXCantParticipUnivMun write FDoctoradosXCantParticipUnivMun;
+    property DoctoradosXCantParticipADistancia: Integer read FDoctoradosXCantParticipADistancia write FDoctoradosXCantParticipADistancia;
+    property DoctoradosXCantGradTotal: Integer read FDoctoradosXCantGradTotal write FDoctoradosXCantGradTotal;
+    property DoctoradosXCantGradMujeres: Integer read FDoctoradosXCantGradMujeres write FDoctoradosXCantGradMujeres;
+    property DoctoradosXCantGradExtranjeros: Integer read FDoctoradosXCantGradExtranjeros write FDoctoradosXCantGradExtranjeros;
+    property DoctoradosXCantGradProfTC: Integer read FDoctoradosXCantGradProfTC write FDoctoradosXCantGradProfTC;
+    property DoctoradosXCantGradProfTP: Integer read FDoctoradosXCantGradProfTP write FDoctoradosXCantGradProfTP;
+
+    //Especialidades
+    property EspecialidadesXCantActivTotal: Integer read FEspecialidadesXCantActivTotal write FEspecialidadesXCantActivTotal;
+    property EspecialidadesXCantActivUnivMun: Integer read FEspecialidadesXCantActivUnivMun write FEspecialidadesXCantActivUnivMun;
+    property EspecialidadesXCantActivADistancia: Integer read FEspecialidadesXCantActivADistancia write FEspecialidadesXCantActivADistancia;
+    property EspecialidadesXCantActivExtranjero: Integer read FEspecialidadesXCantActivExtranjero write FEspecialidadesXCantActivExtranjero;
+    property EspecialidadesXCantParticipTotal: Integer read FEspecialidadesXCantParticipTotal write FEspecialidadesXCantParticipTotal;
+    property EspecialidadesXCantParticipMujeres: Integer read FEspecialidadesXCantParticipMujeres write FEspecialidadesXCantParticipMujeres;
+    property EspecialidadesXCantParticipExtranjeros: Integer read FEspecialidadesXCantParticipExtranjeros write FEspecialidadesXCantParticipExtranjeros;
+    property EspecialidadesXCantParticipProfTC: Integer read FEspecialidadesXCantParticipProfTC write FEspecialidadesXCantParticipProfTC;
+    property EspecialidadesXCantParticipProfTP: Integer read FEspecialidadesXCantParticipProfTP write FEspecialidadesXCantParticipProfTP;
+    property EspecialidadesXCantParticipUnivMun: Integer read FEspecialidadesXCantParticipUnivMun write FEspecialidadesXCantParticipUnivMun;
+    property EspecialidadesXCantParticipADistancia: Integer read FEspecialidadesXCantParticipADistancia write FEspecialidadesXCantParticipADistancia;
+    property EspecialidadesXCantGradTotal: Integer read FEspecialidadesXCantGradTotal write FEspecialidadesXCantGradTotal;
+    property EspecialidadesXCantGradMujeres: Integer read FEspecialidadesXCantGradMujeres write FEspecialidadesXCantGradMujeres;
+    property EspecialidadesXCantGradExtranjeros: Integer read FEspecialidadesXCantGradExtranjeros write FEspecialidadesXCantGradExtranjeros;
+    property EspecialidadesXCantGradProfTC: Integer read FEspecialidadesXCantGradProfTC write FEspecialidadesXCantGradProfTC;
+    property EspecialidadesXCantGradProfTP: Integer read FEspecialidadesXCantGradProfTP write FEspecialidadesXCantGradProfTP;
+
+    //Maestrías
+    property MaestriasXCantActivTotal: Integer read FMaestriasXCantActivTotal write FMaestriasXCantActivTotal;
+    property MaestriasXCantActivUnivMun: Integer read FMaestriasXCantActivUnivMun write FMaestriasXCantActivUnivMun;
+    property MaestriasXCantActivADistancia: Integer read FMaestriasXCantActivADistancia write FMaestriasXCantActivADistancia;
+    property MaestriasXCantActivExtranjero: Integer read FMaestriasXCantActivExtranjero write FMaestriasXCantActivExtranjero;
+    property MaestriasXCantParticipTotal: Integer read FMaestriasXCantParticipTotal write FMaestriasXCantParticipTotal;
+    property MaestriasXCantParticipMujeres: Integer read FMaestriasXCantParticipMujeres write FMaestriasXCantParticipMujeres;
+    property MaestriasXCantParticipExtranjeros: Integer read FMaestriasXCantParticipExtranjeros write FMaestriasXCantParticipExtranjeros;
+    property MaestriasXCantParticipProfTC: Integer read FMaestriasXCantParticipProfTC write FMaestriasXCantParticipProfTC;
+    property MaestriasXCantParticipProfTP: Integer read FMaestriasXCantParticipProfTP write FMaestriasXCantParticipProfTP;
+    property MaestriasXCantParticipUnivMun: Integer read FMaestriasXCantParticipUnivMun write FMaestriasXCantParticipUnivMun;
+    property MaestriasXCantParticipADistancia: Integer read FMaestriasXCantParticipADistancia write FMaestriasXCantParticipADistancia;
+    property MaestriasXCantGradTotal: Integer read FMaestriasXCantGradTotal write FMaestriasXCantGradTotal;
+    property MaestriasXCantGradMujeres: Integer read FMaestriasXCantGradMujeres write FMaestriasXCantGradMujeres;
+    property MaestriasXCantGradExtranjeros: Integer read FMaestriasXCantGradExtranjeros write FMaestriasXCantGradExtranjeros;
+    property MaestriasXCantGradProfTC: Integer read FMaestriasXCantGradProfTC write FMaestriasXCantGradProfTC;
+    property MaestriasXCantGradProfTP: Integer read FMaestriasXCantGradProfTP write FMaestriasXCantGradProfTP;
+
+    //SubTotal III
+    property SubTotal3XCantActivTotal: Integer read FSubTotal3XCantActivTotal write FSubTotal3XCantActivTotal;
+    property SubTotal3XCantActivUnivMun: Integer read FSubTotal3XCantActivUnivMun write FSubTotal3XCantActivUnivMun;
+    property SubTotal3XCantActivADistancia: Integer read FSubTotal3XCantActivADistancia write FSubTotal3XCantActivADistancia;
+    property SubTotal3XCantActivExtranjero: Integer read FSubTotal3XCantActivExtranjero write FSubTotal3XCantActivExtranjero;
+    property SubTotal3XCantParticipTotal: Integer read FSubTotal3XCantParticipTotal write FSubTotal3XCantParticipTotal;
+    property SubTotal3XCantParticipMujeres: Integer read FSubTotal3XCantParticipMujeres write FSubTotal3XCantParticipMujeres;
+    property SubTotal3XCantParticipExtranjeros: Integer read FSubTotal3XCantParticipExtranjeros write FSubTotal3XCantParticipExtranjeros;
+    property SubTotal3XCantParticipProfTC: Integer read FSubTotal3XCantParticipProfTC write FSubTotal3XCantParticipProfTC;
+    property SubTotal3XCantParticipProfTP: Integer read FSubTotal3XCantParticipProfTP write FSubTotal3XCantParticipProfTP;
+    property SubTotal3XCantParticipUnivMun: Integer read FSubTotal3XCantParticipUnivMun write FSubTotal3XCantParticipUnivMun;
+    property SubTotal3XCantParticipADistancia: Integer read FSubTotal3XCantParticipADistancia write FSubTotal3XCantParticipADistancia;
+    property SubTotal3XCantGradTotal: Integer read FSubTotal3XCantGradTotal write FSubTotal3XCantGradTotal;
+    property SubTotal3XCantGradMujeres: Integer read FSubTotal3XCantGradMujeres write FSubTotal3XCantGradMujeres;
+    property SubTotal3XCantGradExtranjeros: Integer read FSubTotal3XCantGradExtranjeros write FSubTotal3XCantGradExtranjeros;
+    property SubTotal3XCantGradProfTC: Integer read FSubTotal3XCantGradProfTC write FSubTotal3XCantGradProfTC;
+    property SubTotal3XCantGradProfTP: Integer read FSubTotal3XCantGradProfTP write FSubTotal3XCantGradProfTP;
+
+
+    //Total
+    property TotalXCantActivTotal: Integer read FTotalXCantActivTotal write FTotalXCantActivTotal;
+    property TotalXCantActivUnivMun: Integer read FTotalXCantActivUnivMun write FTotalXCantActivUnivMun;
+    property TotalXCantActivADistancia: Integer read FTotalXCantActivADistancia write FTotalXCantActivADistancia;
+    property TotalXCantActivExtranjero: Integer read FTotalXCantActivExtranjero write FTotalXCantActivExtranjero;
+    property TotalXCantParticipTotal: Integer read FTotalXCantParticipTotal write FTotalXCantParticipTotal;
+    property TotalXCantParticipMujeres: Integer read FTotalXCantParticipMujeres write FTotalXCantParticipMujeres;
+    property TotalXCantParticipExtranjeros: Integer read FTotalXCantParticipExtranjeros write FTotalXCantParticipExtranjeros;
+    property TotalXCantParticipProfTC: Integer read FTotalXCantParticipProfTC write FTotalXCantParticipProfTC;
+    property TotalXCantParticipProfTP: Integer read FTotalXCantParticipProfTP write FTotalXCantParticipProfTP;
+    property TotalXCantParticipUnivMun: Integer read FTotalXCantParticipUnivMun write FTotalXCantParticipUnivMun;
+    property TotalXCantParticipADistancia: Integer read FTotalXCantParticipADistancia write FTotalXCantParticipADistancia;
+    property TotalXCantGradTotal: Integer read FTotalXCantGradTotal write FTotalXCantGradTotal;
+    property TotalXCantGradMujeres: Integer read FTotalXCantGradMujeres write FTotalXCantGradMujeres;
+    property TotalXCantGradExtranjeros: Integer read FTotalXCantGradExtranjeros write FTotalXCantGradExtranjeros;
+    property TotalXCantGradProfTC: Integer read FTotalXCantGradProfTC write FTotalXCantGradProfTC;
+    property TotalXCantGradProfTP: Integer read FTotalXCantGradProfTP write FTotalXCantGradProfTP;
+
+
+end;
+
+implementation
+
+{ TPuestoDeTrabajo }
+
+Constructor TPlanilla1164_01.Create;
+begin
+  inherited Create;
+end;
+
+Destructor TPlanilla1164_01.Destroy;
+begin
+   inherited Destroy;
+end;
+
+end.

@@ -1,0 +1,176 @@
+unit UfrmAcercaDe;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, jpeg, ShellApi,
+
+  UFicheroIdioma, Menus, LbButton, XiButton, ImgList, ComCtrls;
+
+type
+  TfrmAcercaDe = class(TForm)
+    Panel2: TPanel;
+    Label5: TLabel;
+    lblVersionYCompilacion: TLabel;
+    ImagePresentacion: TImage;
+    lblCreadoPor: TLabel;
+    lblNombreMio: TLabel;
+    lblNombreMaye: TLabel;
+    lblFecha: TLabel;
+    Label2: TLabel;
+    ImageLogoCenSoft: TImage;
+    Image1: TImage;
+    pnpIzquierda: TPanel;
+    pnlSuperior: TPanel;
+    pnlInferior: TPanel;
+    pnlDerecha: TPanel;
+    btnAceptar: TLbButton;
+    procedure lblCorreoMioClick(Sender: TObject);
+    procedure lblCorreoMayeClick(Sender: TObject);
+    procedure btnAceptarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnCerrarClick(Sender: TObject);
+    procedure ImageLogoCenSoftClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure SetIdiomaEspannol;
+    procedure SetIdiomaIngles;    
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAcercaDe: TfrmAcercaDe;
+
+  FicheroIdiomaInicio: TFicheroIdioma;
+  IdiomaImperante: AnsiString;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmAcercaDe.lblCorreoMioClick(Sender: TObject);
+begin
+  //Verifico primero que se haya encontrado un email
+  if (lblNombreMio.Caption <> '')
+    then
+      begin
+        Cursor:= crHandPoint;
+        ShellExecute(GetDesktopWindow(),
+                       nil,
+                       pChar('mailto:'+
+                       'reiniermillenium@gmail.com'),
+                       nil,
+                       nil,
+                       SW_SHOWNORMAL);
+      end
+        else
+          begin
+            Cursor:= crDefault;
+          end;
+end;
+
+procedure TfrmAcercaDe.lblCorreoMayeClick(Sender: TObject);
+begin
+  //Verifico primero que se haya encontrado un email
+  if (lblNombreMaye.Caption <> '')
+    then
+      begin
+        Cursor:= crHandPoint;
+        ShellExecute(GetDesktopWindow(),
+                       nil,
+                       pChar('mailto:'+
+                       'mayelinespino@gmail.com'),
+                       nil,
+                       nil,
+                       SW_SHOWNORMAL);
+      end
+        else
+          begin
+            Cursor:= crDefault;
+          end;
+end;
+
+
+
+procedure TfrmAcercaDe.btnAceptarClick(Sender: TObject);
+begin
+  //Cierro la forma
+  frmAcercaDe.Close;
+end;
+
+procedure TfrmAcercaDe.FormShow(Sender: TObject);
+begin
+  //Creo el fichero de idioma
+  FicheroIdiomaInicio:= TFicheroIdioma.New;
+
+  //Cargo el fichero de idioma
+  FicheroIdiomaInicio.Cargar(ExtractFilePath(Application.ExeName) + 'Languaje\lang.txt');
+
+  //Determino el idoma a mostrar en a interfaz
+  if (FicheroIdiomaInicio.DeterminarIdiomaImperante = 'Ingles')
+    then
+      begin
+        //Actualizo la variable indicadora de idioma imperante
+        IdiomaImperante:= 'Ingles';
+
+        //Instauro el idioma ingles
+        SetIdiomaIngles;
+      end
+        else
+          begin
+            if (FicheroIdiomaInicio.DeterminarIdiomaImperante = 'Espannol')
+              then
+                begin
+                  //Actualizo la variable indicadora de idioma imperante
+                  IdiomaImperante:= 'Espannol';
+
+                  //Instauro el idioma espannol
+                  SetIdiomaEspannol;
+                end;
+          end;
+end;
+
+procedure TfrmAcercaDe.SetIdiomaEspannol;
+begin
+  frmAcercaDe.Caption:= 'Acerca de BookLogger';
+  lblVersionYCompilacion.Caption:= 'Compilación 04.0';
+  lblCreadoPor.Caption:= 'Creado por :';
+  lblFecha.Caption:= 'Marzo del 2009.';
+  btnAceptar.Caption:= 'Aceptar';
+end;
+
+procedure TfrmAcercaDe.SetIdiomaIngles;
+begin
+  frmAcercaDe.Caption:= 'Acerca de BookLogger';
+  lblVersionYCompilacion.Caption:= 'Compilación 04.0';
+  lblCreadoPor.Caption:= 'Creado por :';
+  lblFecha.Caption:= 'Marzo del 2009.';
+  btnAceptar.Caption:= 'Aceptar';
+end;
+
+
+
+procedure TfrmAcercaDe.btnCerrarClick(Sender: TObject);
+begin
+  //Cierro la forma
+  frmAcercaDe.Close;
+end;
+
+
+
+procedure TfrmAcercaDe.ImageLogoCenSoftClick(Sender: TObject);
+begin
+  Cursor:= crHandPoint;
+  ShellExecute(GetDesktopWindow(),
+                 nil,
+                 pChar('http://censoft.blogspot.com'),
+                 nil,
+                 nil,
+                 SW_SHOWNORMAL);
+end;
+
+
+
+end.
